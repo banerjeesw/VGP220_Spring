@@ -88,6 +88,59 @@ public:
 		return *this;
 	}
 
+
+	//ERROR: -10. I think you got the idea of the member variables wrong. mSlotsOccupied is slots in 
+	//your inventory that has an item inside.
+	//I'll post the correct code for you...
+	//void AddItem(Item newItem)
+	//{
+	//	if (!isFullForItem(&newItem))
+	//	{
+	//		int slotIndex = SearchItemByNameLessThan50(newItem.name);
+	//		//I have this Item in inventory
+	//		if (slotIndex != -1)
+	//		{
+	//			int futureQuantity = mInventory[slotIndex].quantity + newItem.quantity;
+	//			if (futureQuantity > 50)
+	//			{
+	//				newItem.quantity = futureQuantity - 50;
+	//				mInventory[slotIndex].quantity = 50;
+	//				mInventory[mSlotsOccupied] = newItem;
+	//				mSlotsOccupied++;
+	//				return;
+	//			}
+
+	//			mInventory[slotIndex].quantity += newItem.quantity;
+	//			return;
+	//		}
+	//		//Inserting for the first time
+	//		else
+	//		{
+	//			//Expanding inventory;
+	//			if ((newItem.type == ItemType::Charm) && (newItem.name.compare("Expansion") == 0))
+	//			{
+	//				Item* temp = mInventory;
+	//				mMaxSlots += 5;
+	//				mInventory = new Item[mMaxSlots];
+	//				for (int i = 0; i < mSlotsOccupied; ++i)
+	//				{
+	//					mInventory[i] = temp[i];
+	//				}
+	//				delete[] temp;
+	//				temp = nullptr;
+	//			}
+
+	//			//After expansion, insert.
+	//			mInventory[mSlotsOccupied] = newItem;
+	//			mSlotsOccupied++;
+	//		}
+	//	}
+
+	//	std::cout << "Adding " << newItem.quantity << " " << newItem.name << " in inventory." << "\n";
+	//}
+
+
+
 	void AddItem(Item newItem)
 	{
 		//TODO: Implement AddItem MethodThis method adds a new item to the inventory. 
@@ -161,6 +214,8 @@ public:
 		}
 	}
 
+	//ERROR: -10. You are deleting memory on remove and you don't need to do this. You just have to
+	//shift elements to remove from inventory, and not delete memory.
 	void RemoveItem(std::string itemName, int quantity)
 	{
 		//TODO: Implement RemoveItem method
